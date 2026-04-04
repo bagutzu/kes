@@ -1,29 +1,41 @@
-linters-settings:
-  misspell:
-    locale: US
-
-  staticcheck:
-    checks: ["all", "-SA1019"]
+version: "2"
 
 linters:
-  disable-all: true
+  default: none
   enable:
-    - typecheck
-    - goimports
     - misspell
     - staticcheck
     - govet
     - revive
     - ineffassign
-    - gosimple
     - unused
     - prealloc
     - unconvert
-    - gofumpt
+  settings:
+    misspell:
+      locale: US
+    staticcheck:
+      checks:
+        - "all"
+        - "-SA1019"
+        - "-ST1000"  # package comments
+        - "-ST1019"  # duplicate imports
+        - "-QF1001"  # De Morgan's law suggestions
+        - "-QF1002"  # tagged switch suggestions
+        - "-QF1008"  # embedded field selector suggestions
+        - "-QF1012"  # fmt.Fprint suggestions
+  exclusions:
+    rules:
+      - text: "var-naming: don't use ALL_CAPS in Go names; use CamelCase"
+        linters: [revive]
+      - text: "package-comments: should have a package comment"
+        linters: [revive]
+      - text: "exitAfterDefer:"
+        linters: [revive]
+      - linters: [prealloc]
+        path: "_test\\.go"
 
-issues:
-  exclude-use-default: false
-  exclude:
-      - "var-naming: don't use ALL_CAPS in Go names; use CamelCase"
-      - "package-comments: should have a package comment"
-      - "exitAfterDefer:"
+formatters:
+  enable:
+    - goimports
+    - gofumpt

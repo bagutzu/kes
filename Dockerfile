@@ -6,12 +6,12 @@ FROM registry.access.redhat.com/ubi9/ubi-micro:9.5
 
 ARG TAG
 
-LABEL name="MinIO" \
-      vendor="MinIO Inc <dev@min.io>" \
-      maintainer="MinIO Inc <dev@min.io>" \
+LABEL name="KES" \
+      vendor="bagutzu <https://github.com/bagutzu/kes>" \
+      maintainer="bagutzu <https://github.com/bagutzu/kes>" \
       version="${TAG}" \
       release="${TAG}" \
-      summary="KES is a cloud-native distributed key management and encryption server designed to build zero-trust infrastructures at scale."
+      summary="KES community fork - cloud-native distributed key management and encryption server."
 
 # On RHEL the certificate bundle is located at:
 # - /etc/pki/tls/certs/ca-bundle.crt (RHEL 6)

@@ -1,17 +1,19 @@
-# ⛔️ DEPRECATED
+# KES (Community-maintained fork)
 
-**This repository is no longer maintained.**. No new features, releases or bug fixes will be added here.
+[![github: bagutzu/kes](https://img.shields.io/badge/Repo-bagutzu/kes-slategray?style=flat&logo=github&logoColor=white)](https://github.com/bagutzu/kes)
+[![Docker Image](https://img.shields.io/badge/Docker-bagutzu/kes-%232496ED?style=flat&logo=docker&logoColor=white)](https://hub.docker.com/r/bagutzu/kes)
 
-**All previous open source releases of KES will continue to be available.**
-
-**All paying customers have access to Enterprise version of KES which is actively maintained at 
-https://github.com/miniohq/kes - please open a [SUBNET](https://subnet.min.io) issue to discuss further.**
-
-**MinIO alternatively provides [MinKMS AiStor Key Manager](https://min.io/docs/aistor-custom/key-manager/)**
-
-**MinKMS is a fully featured key manager optimized to be used with [MinIO AiStor](https://min.io/download?view=aistor-custom).**
-
-> NOTE: Migration from KES Open Source and KES Enterprise to MinKMS is supported as well.
+> [!IMPORTANT]
+> **This is a community-maintained fork of [minio/kes](https://github.com/minio/kes), maintained by [bagutzu](https://github.com/bagutzu).**
+> This project is **NOT** affiliated with, endorsed by, or sponsored by MinIO, Inc.
+> "MinIO" and "KES" are trademarks of MinIO, Inc., used here solely to identify the upstream project.
+>
+> The upstream repository was deprecated and archived by MinIO. This fork exists to:
+> - Continue providing security patches and bug fixes
+> - Maintain pre-built binaries, Docker images, and packages (RPM/DEB)
+> - Keep the project alive for the community that depends on it
+>
+> Distributed under the original [GNU AGPLv3](LICENSE) license.
 
 <p align="center">
   <img src='.github/logo.svg?sanitize=true' width='55%'>
@@ -40,18 +42,11 @@ stateless instances that can be scaled up and down automatically.
 
 The KES server and CLI is available as a single binary, container image or can be build from source.
 
-<details open="true"><summary><b><a name="homebrew">Homebrew</a></b></summary>
-
-```sh
-brew install minio/stable/kes
-```
-</details>
-
-<details><summary><b><a name="docker">Docker</a></b></summary>
+<details open="true"><summary><b><a name="docker">Docker</a></b></summary>
 
 Pull the latest release via:
 ```
-docker pull minio/kes
+docker pull bagutzu/kes
 ```
 </details>
 
@@ -59,26 +54,17 @@ docker pull minio/kes
 
 | OS      | ARCH    | Binary                                                                                       |
 |:-------:|:-------:|:--------------------------------------------------------------------------------------------:|
-| linux   | amd64   | [linux-amd64](https://github.com/minio/kes/releases/latest/download/kes-linux-amd64)         |
-| linux   | arm64   | [linux-arm64](https://github.com/minio/kes/releases/latest/download/kes-linux-arm64)         |
-| darwin  | arm64   | [darwin-arm64](https://github.com/minio/kes/releases/latest/download/kes-darwin-arm64)       |
-| windows | amd64   | [windows-amd64](https://github.com/minio/kes/releases/latest/download/kes-windows-amd64.exe) |
+| linux   | amd64   | [linux-amd64](https://github.com/bagutzu/kes/releases/latest/download/kes-linux-amd64)         |
+| linux   | arm64   | [linux-arm64](https://github.com/bagutzu/kes/releases/latest/download/kes-linux-arm64)         |
+| darwin  | arm64   | [darwin-arm64](https://github.com/bagutzu/kes/releases/latest/download/kes-darwin-arm64)       |
+| windows | amd64   | [windows-amd64](https://github.com/bagutzu/kes/releases/latest/download/kes-windows-amd64.exe) |
 
 Download the binary via `curl` but replace `<OS>` and `<ARCH>` with your operating system and CPU architecture.
 ```
-curl -sSL --tlsv1.2 'https://github.com/minio/kes/releases/latest/download/kes-<OS>-<ARCH>' -o ./kes
+curl -sSL --tlsv1.2 'https://github.com/bagutzu/kes/releases/latest/download/kes-<OS>-<ARCH>' -o ./kes
 ```
 ```
 chmod +x ./kes
-```
-
-You can also verify the binary with [minisign](https://jedisct1.github.io/minisign/) by downloading the corresponding [`.minisig`](https://github.com/minio/kes/releases/latest) signature file. 
-Run:
-```
-curl -sSL --tlsv1.2 'https://github.com/minio/kes/releases/latest/download/kes-<OS>-<ARCH>.minisig' -o ./kes.minisig
-```
-```
-minisign -Vm ./kes -P RWTx5Zr1tiHQLwG9keckT0c45M3AGeHD6IvimQHpyRywVWGbP1aVSGav
 ```
 </details>   
    
@@ -89,6 +75,8 @@ Download and install the binary via your Go toolchain:
 ```sh
 go install github.com/minio/kes/cmd/kes@latest
 ```
+
+> Note: The Go module path remains `github.com/minio/kes` for compatibility with existing tooling and imports.
 
 </details>
    
@@ -128,9 +116,8 @@ decryption.
 
 ## Docs
 
-If you want to learn more about KES checkout our [documentation](https://min.io/docs/kes/).
+For more information about KES, refer to the upstream documentation (may become unavailable):
  - [Integration Guides](https://github.com/minio/kes/wiki#supported-kms-targets)
- - [Command Line](https://min.io/docs/kes/cli/#available-commands)
  - [Server API](https://min.io/docs/kes/concepts/server-api/)
  - [Go SDK](https://pkg.go.dev/github.com/minio/kes-go)
 
